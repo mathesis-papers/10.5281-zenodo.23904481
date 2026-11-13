@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "problem_ids": ["koljancic-oblak-2026-nssp-minimum-arcs-problem-1-8"],
+  "statement": "For every integer n≥1, all exact directed supports on n vertices requiring nSSP over the reals have at least 2n−1 arcs, and an exact support requiring nSSP with exactly 2n−1 arcs exists at the same n.",
+  "domain": {
+    "matrices": "All real n×n matrices; arbitrary nonzero weights and signs at the prescribed ordered pairs",
+    "supports": "Subsets of [n]×[n], loops allowed and counted once, no parallel multiplicity",
+    "nssp": "For every real X, A∘X=0 and AX^T=X^TA imply X=0; no extra diagonal or trace condition",
+    "requires": "Every realization of the exact support has nSSP",
+    "allows": "At least one realization of the exact support has nSSP",
+    "positive_order_boundary": "n=1 is attained by a single loop; n=0 is excluded"
+  },
+  "posing_source": {
+    "authors": ["Sara Koljančić", "Polona Oblak"],
+    "title": "Combinatorial aspects of the nonsymmetric strong spectral property for graphs",
+    "doi": "10.13001/ela.2026.10523",
+    "url": "https://journals.uwyo.edu/index.php/ela/article/view/10523",
+    "pdf_url": "https://journals.uwyo.edu/index.php/ela/article/download/10523/7529",
+    "versioned_preprint": "https://arxiv.org/abs/2604.21552v1",
+    "locator": "Problem 1.8, printed p. 759; Definitions 1.1 and 1.3, pp. 755–756",
+    "exact_question": "Is the minimum number of arcs in a directed graph G on n vertices that requires the nSSP equal to 2n−1?",
+    "upper_construction_locator": "Theorem 5.5, p. 771, with m=1; Remark 2.10(A), p. 764"
+  },
+  "proof_map": [
+    {"claim": "dim Z(A)≥n", "written_location": "note.tex, Lemma centralizer", "method": "Cyclic decomposition over R[t] and multiplication on cyclic factors"},
+    {"claim": "Z(A) injects into ker B", "written_location": "note.tex, Theorem cycle", "method": "F↦(a_ij f_ji); nSSP gives injectivity and diagonal commutation gives zero boundary", "lean_declaration": "nssp_centralizer_cycle_bound"},
+    {"claim": "A requiring support is weakly connected", "written_location": "note.tex, Lemmas realize and connected", "method": "Loopless component diagonal obstruction; looped supports sharing eigenvalue 1; off-block rank-one obstruction", "lean_declaration": "requires_connected"},
+    {"claim": "Endpoint-looped bidirected paths require nSSP at every positive order", "written_location": "note.tex, Lemma path", "method": "Odd-offset propagation, first-column vanishing and a cyclic endpoint vector", "lean_declarations": ["endpoint_requires", "endpoint_attainment"], "attribution": "Koljančić–Oblak Theorem 5.5 with m=1"},
+    {"claim": "The sharp requiring minimum is 2n−1", "written_location": "note.tex, Theorem main", "lean_declaration": "result"}
+  ],
+  "written_corollaries": [
+    "For any nSSP matrix with c weak support components, m≥2n−c.",
+    "Any weakly connected support allowing nSSP has m≥2n−1.",
+    "Both questions of Koljančić–Oblak Problem 2.9, printed p. 764, have minimum 2n−1.",
+    "No sign pattern on a weakly connected support with at most 2n−2 nonzero positions allows nSSP.",
+    "For a connected nSSP matrix with m=2n−1, dim Z(A)=n and the support readout is an isomorphism onto ker B."
+  ],
+  "formal_correspondence": {
+    "revision": "cc684e6326490f9173bfefcadb0294ee6ccbb0b5",
+    "file_url": "https://github.com/the-omega-institute/trureturing/blob/cc684e6326490f9173bfefcadb0294ee6ccbb0b5/D5/S3/Combinatorics/SpectralGraph/KoljancicOblakMinimumArcs.lean",
+    "namespace": "D5.S3.Combinatorics.SpectralGraph.KoljancicOblakMinimumArcs",
+    "minimum_declaration": "result",
+    "connected_allowing_lower_bound": "nssp_arc_bound_of_connected",
+    "component_and_equality_scope": "Written deductions; not additional named declarations in this file"
+  },
+  "source_coverage": [
+    {"item": "Problem 1.8, p. 759", "status": "proved"},
+    {"item": "Problem 2.9, p. 764, requiring and allowing", "status": "proved"},
+    {"item": "Theorem 2.7(B), p. 763", "status": "generalized from tree supports to all weakly connected supports"},
+    {"item": "Remark 2.8, p. 764", "status": "its finite-order minimum conclusions follow at all positive orders"},
+    {"item": "Theorem 5.5, p. 771; Remark 2.10(A), p. 764", "status": "prior construction cited; endpoint singleton case proved in the note"},
+    {"item": "Problem 1.6, p. 757", "status": "full requiring/allowing/not-allowing classification not covered; earlier allow/not-allow classification cited"},
+    {"item": "Question 5.11, p. 776", "status": "prior proof cited", "prior_source": "https://github.com/Carptopus/MathExplore-Notes/blob/e57ee007380cbc351eb371d8e991303cab5f1e48/research/nssp-looped-double-paths/nssp-looped-double-paths.tex", "locator": "Carptopus, v0.1-beta dated 19 August 2026, Theorem 6.1 and Corollary 6.2"},
+    {"item": "Arav et al. Problem 6.2", "status": "proved: the minimum number of nonzero entries in a zero–nonzero pattern requiring STP is 2n−1 for every n≥1", "locator_basis": "Koljančić–Oblak p. 759 explicitly identifies Problem 1.8 as its equivalent reformulation; p. 756 records nSSP equivalent to STP", "bibliographic_doi": "10.1016/j.laa.2024.05.013"},
+    {"item": "Arav et al. Problems 6.1 and 6.5", "status": "prior negative answers cited through Koljančić–Oblak pp. 757–759; no new unrestricted sign-pattern claim"},
+    {"item": "Arav et al. Problem 6.3", "status": "general sign-pattern allowability classification not covered here; Koljančić–Oblak Theorem 2.7 gives particular obstructions"}
+  ],
+  "finite_checks": {
+    "program": "verify.py",
+    "results": "verification.json",
+    "scope": "All 530 zero–one matrices of orders 1–3; 1092 endpoint weightings from {−2,−1,1,2} at orders 1–3; all 128 sign weightings at order 4; 24 deterministic integer endpoint matrices at orders 4–9; 12 rational endpoint crosschecks; explicit transpose and disconnected controls",
+    "universal_scope": "The finite checks are corroborating examples; the universal conclusions follow from the written proofs."
+  }
+}

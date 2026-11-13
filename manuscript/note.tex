@@ -1,0 +1,350 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=28mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,microtype,amsmath,amssymb,amsthm,booktabs,tabularx,array}
+\usepackage[colorlinks=true,allcolors=blue!60!black]{hyperref}
+\usepackage{xcolor}
+\hypersetup{pdftitle={The 2n-1 arc minimum in Koljancic--Oblak, Problem 1.8},pdfauthor={Haobo Ma; Wenlin Zhang}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\R}{\mathbb R}
+\newcommand{\Zc}{\mathcal Z}
+\newcommand{\nssp}{\mathrm{nSSP}}
+\newcommand{\leanlink}[1]{\href{https://github.com/the-omega-institute/trureturing/blob/cc684e6326490f9173bfefcadb0294ee6ccbb0b5/D5/S3/Combinatorics/SpectralGraph/KoljancicOblakMinimumArcs.lean}{\texttt{#1}}}
+\setlength{\emergencystretch}{2em}
+\title{The $2n-1$ arc minimum in Koljan\v{c}i\'{c}--Oblak,\\Problem 1.8 (p.~759)}
+\author{Haobo Ma\\\small ChronoAI Pte Ltd, Singapore
+\and Wenlin Zhang\\\small National University of Singapore\\\small ChronoAI Pte Ltd, Singapore}
+\date{November 2, 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+Koljan\v{c}i\'{c}--Oblak's Problem 1.8, \emph{Electronic Journal of Linear
+Algebra} \textbf{42} (2026), p.~759, has an affirmative answer: the minimum
+number of arcs in an $n$-vertex digraph requiring the nonsymmetric strong
+spectral property is $2n-1$ for every $n\geq1$. By their identification
+with Arav et al.'s Problem 6.2, this also gives the minimum $2n-1$ of
+nonzero entries in a zero--nonzero pattern requiring the
+similarity-transversality property (STP).
+We give a self-contained exposition of the centralizer--incidence proof
+formalized in Lean \cite{Formal}. More generally, every real matrix with this property and
+with $c$ weak support components has at least $2n-c$ nonzero entries.
+For connected supports, even allowing one such matrix forces $2n-1$
+arcs. Together with the endpoint-looped double path of
+Koljan\v{c}i\'{c}--Oblak, this also answers both questions in their
+Problem 2.9 (p.~764). The endpoint construction is prior work.
+\end{abstract}
+
+\section{The question and its quantifiers}
+Koljan\v{c}i\'{c}--Oblak \cite[Problem 1.8, p.~759]{KO} ask for the least
+number of arcs in an $n$-vertex digraph \emph{requiring} $\nssp$.
+We prove that the answer is $2n-1$, including $n=1$.
+Their p.~759 identifies this question as an equivalent reformulation of
+Arav et al.'s Problem 6.2 \cite{Arav}. Their p.~756 cites the same work
+for the equivalence of $\nssp$ and the similarity-transversality property
+(STP). Thus the theorem also answers that zero--nonzero pattern question;
+the problem number and equivalence here follow the identification in
+\cite[pp.~756, 759]{KO}.
+Here arcs are ordered pairs in $[n]\times[n]$, loops count once,
+and parallel arcs are absent. For $E\subseteq[n]\times[n]$, put
+\[
+ \mathcal M(E)=\{A\in\R^{n\times n}:a_{ij}\ne0\ \Longleftrightarrow\ (i,j)\in E\}.
+\]
+A real matrix $A$ has $\nssp$ if
+\begin{equation}\label{eq:nssp}
+ A\circ X=0,\qquad AX^{\mathsf T}=X^{\mathsf T}A
+ \quad\Longrightarrow\quad X=0
+ \qquad(X\in\R^{n\times n}).
+\end{equation}
+There is no additional diagonal or trace condition. A support
+\emph{requires} $\nssp$ if every $A\in\mathcal M(E)$ has it; it
+\emph{allows} $\nssp$ if at least one does. These are the conventions
+of \cite[Definitions 1.1 and 1.3]{KO}. Signs and nonzero arc weights
+are unrestricted throughout.
+
+\begin{theorem}\label{thm:main}
+For every $n\geq1$, the minimum of $|E|$ over supports requiring
+$\nssp$ is $2n-1$. The same minimum is $2n-1$ when $E$ is restricted
+to strongly connected supports, whether it is required to require
+$\nssp$ or merely to allow it.
+\end{theorem}
+
+The universal requiring result is the theorem encoded by
+\leanlink{result} in \cite{Formal}. The argument below also makes its
+connected-allowing consequence explicit. This exposition combines that
+centralizer proof with the source's endpoint construction.
+
+\section{A centralizer inside the directed cycle space}
+Let $\Zc(A)=\{F:AF=FA\}$ be the real centralizer. Write $m=|E|$ and
+let $B\in\R^{n\times m}$ be the signed incidence matrix whose column
+for $(i,j)$ is $e_j-e_i$. A loop therefore contributes a zero column.
+
+\begin{lemma}\label{lem:centralizer}
+Every real $n\times n$ matrix satisfies $\dim_\R\Zc(A)\geq n$.
+\end{lemma}
+\begin{proof}
+Give $V=\R^n$ its $\R[t]$-module structure $t\cdot v=Av$.
+The cyclic decomposition theorem for finitely generated torsion modules
+over the principal ideal domain $\R[t]$ writes
+$V\simeq\bigoplus_r\R[t]/(p_r)$, with $\sum_r\deg p_r=n$.
+On each summand, multiplication by an arbitrary residue class commutes
+with multiplication by $t$. Extending it by zero on the other summands
+gives commuting real linear maps. The resulting map
+$\bigoplus_r\R[t]/(p_r)\longrightarrow\Zc(A)$ is injective:
+on the $r$th summand its value at the residue class of $1$ recovers the
+multiplier. Its domain has real dimension $n$.
+\end{proof}
+
+\begin{theorem}\label{thm:cycle}
+If $A\in\mathcal M(E)$ has $\nssp$ and $E$ has $c$ weak components,
+including isolated vertices, then
+\begin{equation}\label{eq:bound}
+ n\ \leq\ \dim_\R\Zc(A)\ \leq\ \dim\ker B
+   =m-n+c,\qquad m\geq2n-c.
+\end{equation}
+\end{theorem}
+\begin{proof}
+Define the linear map
+\[
+ T_A:\Zc(A)\longrightarrow\R^E,\qquad
+       (T_AF)_{(i,j)}=a_{ij}f_{ji}.
+\]
+If $T_AF=0$, then $A\circ F^{\mathsf T}=0$, including the entries
+outside $E$. Since $AF=FA$, apply \eqref{eq:nssp} to $X=F^{\mathsf T}$
+to obtain $F=0$. Thus $T_A$ is injective.
+For each vertex $v$,
+\[
+ (BT_AF)_v=\sum_i a_{iv}f_{vi}-\sum_j a_{vj}f_{jv}
+         =(FA)_{vv}-(AF)_{vv}=0.
+\]
+Hence $T_A(\Zc(A))\subseteq\ker B$. Finally,
+$\ker B^{\mathsf T}$ consists exactly of functions constant on each
+weak component: its equation on arc $(i,j)$ is $p_j-p_i=0$.
+It has dimension $c$, so $\operatorname{rank}B=n-c$ and
+$\dim\ker B=m-n+c$. Lemma~\ref{lem:centralizer} finishes the proof.
+\end{proof}
+
+\begin{corollary}\label{cor:connected}
+A weakly connected support allowing $\nssp$ has at least $2n-1$
+arcs. Consequently no sign pattern on a weakly connected support with
+at most $2n-2$ nonzero positions allows $\nssp$.
+If a connected $\nssp$ matrix has exactly $2n-1$ nonzero entries,
+then $\dim\Zc(A)=n$ and $T_A:\Zc(A)\to\ker B$ is an isomorphism.
+\end{corollary}
+\begin{proof}
+Set $c=1$ in \eqref{eq:bound}. A matrix in any sign class is still a
+matrix with that exact support. In the equality case both inequalities
+in \eqref{eq:bound} are equalities; the injective map $T_A$ has domain
+and codomain of the same dimension.
+\end{proof}
+
+\section{Why universal requiring supports are connected}
+We supply the connectivity step rather than assuming it.
+
+\begin{lemma}\label{lem:realize}
+Every finite real exact support containing a loop has a realization
+with eigenvalue $1$.
+\end{lemma}
+\begin{proof}
+Choose a loop $(r,r)$ and let $N$ have entry $1$ at every support
+position except $(r,r)$, and entry $0$ elsewhere. Set
+$A(\epsilon,t)=\epsilon N+t e_re_r^{\mathsf T}$.
+The determinant is affine in $t$:
+\[
+ \det(I-A(\epsilon,t))=u(\epsilon)-t v(\epsilon),
+ \qquad u(0)=v(0)=1.
+\]
+Here $u(\epsilon)=\det(I-\epsilon N)$ and $v(\epsilon)$ is the
+$(r,r)$ cofactor of $I-\epsilon N$, including the empty cofactor $1$
+for a one-vertex support. These are real polynomials. For sufficiently
+small nonzero real $\epsilon$, both remain nonzero. Taking
+$t=u(\epsilon)/v(\epsilon)$ gives precisely the required support and
+$\det(I-A)=0$.
+\end{proof}
+
+\begin{lemma}\label{lem:connected}
+A support on a nonempty vertex set requiring $\nssp$ is weakly connected.
+\end{lemma}
+\begin{proof}
+Each weak component must contain a loop. Otherwise its diagonal
+indicator matrix $F$ is nonzero, commutes with every realization $A$,
+and satisfies $A\circ F^{\mathsf T}=0$, contradicting $\nssp$.
+If there are two or more components, partition them into two nonempty
+groups. Each group contains a loop. By Lemma~\ref{lem:realize}, choose
+exact-support matrices $C,D$ on the two groups, both with eigenvalue
+$1$. Choose nonzero real vectors $u,v$ with $Cu=u$ and
+$v^{\mathsf T}D=v^{\mathsf T}$. Then, for
+\[
+ A=\begin{pmatrix}C&0\\0&D\end{pmatrix},\qquad
+ F=\begin{pmatrix}0&uv^{\mathsf T}\\0&0\end{pmatrix},
+\]
+one has $AF=FA$ and $F\ne0$. Since there are no arcs between the
+groups, $A\circ F^{\mathsf T}=0$. This contradicts the requirement
+for this realization.
+\end{proof}
+
+The distinction from allowing is essential: $\operatorname{diag}(1,2)$
+has $\nssp$ and two arcs, while its disconnected support does not
+require $\nssp$, as the realization $I_2$ shows. In particular the
+connected-support qualification in Corollary~\ref{cor:connected}
+cannot be removed.
+
+\section{The sharp example, with its arbitrary-weight proof}
+Let $P_{n,\{1\}}$ have both arcs between consecutive vertices and the
+single loop $(1,1)$. It has $2(n-1)+1=2n-1$ arcs and is strongly
+connected, with the usual length-zero-path convention at $n=1$.
+The fact that this support requires $\nssp$ is
+\cite[Theorem 5.5 with $m=1$, p.~771; Remark 2.10(A), p.~764]{KO}.
+Here is a direct proof, using the odd-offset propagation also present
+in \cite{Formal}.
+
+\begin{lemma}\label{lem:path}
+Every real matrix with exact support $P_{n,\{1\}}$ has $\nssp$.
+\end{lemma}
+\begin{proof}
+The case $n=1$ is immediate. Otherwise write
+$a_{11}=d\ne0$, $a_{i,i+1}=u_i\ne0$ and
+$a_{i+1,i}=\ell_i\ne0$ for $1\leq i<n$; all other entries vanish.
+Let $AF=FA$ and $A\circ F^{\mathsf T}=0$. Then
+$f_{11}=0$ and $f_{i,i+1}=f_{i+1,i}=0$.
+Use zero entries outside the index interval $[1,n]$, and put
+$\ell_n=0$.
+
+We first prove that every entry at odd distance from the diagonal is
+zero. The first off-diagonals already vanish. Suppose $k\geq3$ is odd
+and all smaller odd offsets vanish. In the $(i+1,i+k)$ entry of
+$AF=FA$, both diagonal coefficients of $A$ are zero. The terms at
+offset $k-2$ vanish, leaving
+\begin{equation}\label{eq:odd}
+ \ell_i f_{i,i+k}=\ell_{i+k}f_{i+1,i+k+1}
+ \qquad(1\leq i\leq n-k).
+\end{equation}
+Starting with $i=n-k$, the right side is zero. Descend in $i$ and
+use $\ell_i\ne0$ to obtain the entire upper offset $k$. Applying the
+same argument to $(A^{\mathsf T},F^{\mathsf T})$ proves the lower
+offset. Induction establishes the claim.
+
+It follows that the first column of $F$ is zero. Its first entry is
+already zero, and all even-indexed entries have odd offset. For odd
+$i\geq3$, the $(i,1)$ equation of $AF=FA$ reduces to
+$0=d f_{i1}$: the neighboring entries in column $1$ and $f_{i2}$
+have odd offset, and $a_{ii}=0$. Thus these entries also vanish.
+Finally, the vectors $e_1,Ae_1,\ldots,A^{n-1}e_1$ form a basis:
+$A^ke_1$ is supported on the first $k+1$ coordinates and its
+$(k+1)$st coordinate is $\ell_1\cdots\ell_k\ne0$.
+Since $F$ commutes with $A$ and $Fe_1=0$, it kills this basis, so
+$F=0$. Setting $F=X^{\mathsf T}$ proves \eqref{eq:nssp}.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+By Lemma~\ref{lem:connected}, a requiring support is weakly connected.
+Corollary~\ref{cor:connected} gives its lower bound $2n-1$.
+Lemma~\ref{lem:path} supplies equality at the same order $n$.
+For the two strongly connected variants, the lower bound follows
+already from connected allowing, while the same path provides
+attainment and even the stronger requiring property.
+\end{proof}
+
+\section{Source coverage and verification scope}
+The following table distinguishes consequences of this proof from
+earlier results and questions outside its scope. All locators in the
+first column refer to the journal version \cite{KO} unless specified.
+\begin{center}\small
+\begin{tabularx}{\textwidth}{@{}p{0.30\textwidth}X@{}}
+\toprule
+Source item & Coverage\\
+\midrule
+Problem 1.8, p.~759 & Proved: the requiring minimum is $2n-1$.\\
+Problem 2.9, p.~764, both questions & Proved: both strongly connected minima
+(requiring and allowing) are $2n-1$.\\
+Theorem 2.7(B), p.~763 & Generalized: any weakly connected support with at
+most $2n-2$ arcs fails to allow $\nssp$, not just supports over trees.\\
+Remark 2.8, p.~764 & Its finite-order requiring conclusions follow for every
+positive order.\\
+Theorem 5.5, p.~771; Remark 2.10(A), p.~764 & Prior construction credited;
+the endpoint-loop case is proved above. Other initial loop segments are
+not rederived.\\
+Problem 1.6, p.~757 & Full require/allow/not-allow trichotomy not covered.
+Prior allow/not-allow classification: \cite[Theorem 6.1]{Paths}.\\
+Question 5.11, p.~776 & Prior affirmative proof:
+\cite[Corollary 6.2]{Paths}, for even $n$ and every nonempty $L$.\\
+Arav et al.\ \cite{Arav}, Problem 6.2, as identified in
+\cite[p.~759]{KO} & Proved: the minimum number of nonzero entries in a
+zero--nonzero pattern requiring STP is $2n-1$; the equivalence with $\nssp$
+is recorded in \cite[p.~756]{KO}.\\
+Arav et al.\ \cite{Arav}, Problems 6.1 and 6.5, as identified in
+\cite[pp.~757--759]{KO} & Prior negative answers: Example 1.7 disproves the
+unrestricted sign minimum in 6.1; p.~757 disproves 6.5.\\
+Arav et al.\ \cite{Arav}, Problem 6.3, as identified in
+\cite[p.~763]{KO} & General sign-pattern allowability classification
+not covered here; \cite[Theorem 2.7]{KO} gives particular obstructions.\\
+\bottomrule
+\end{tabularx}
+\end{center}
+The connected sign-pattern consequence is Corollary~\ref{cor:connected},
+not a repair of the unrestricted sign question: its four-entry
+counterexample in \cite[Example 1.7]{KO} is disconnected.
+The allow/not-allow classification in \cite{Paths} is a dated public
+mathematical note, not a journal publication. Its statements are
+credited here rather than presented as new consequences of our bound.
+The classification of all equality supports is not established here.
+
+\paragraph{Formal correspondence.}
+Every link below points directly to the same pinned Lean file
+at commit \texttt{cc684e6326490f9173bfefcadb0294ee6ccbb0b5}.
+All declaration names have namespace
+\texttt{D5.S3.Combinatorics.SpectralGraph.}\allowbreak
+\texttt{KoljancicOblakMinimumArcs}.
+\begin{center}\small
+\begin{tabularx}{\textwidth}{@{}p{0.55\textwidth}X@{}}
+\toprule
+Lean declaration & Mathematical statement\\
+\midrule
+\leanlink{nssp\_centralizer\_cycle\_bound} &
+$n+\operatorname{rank}B\leq |E|$ for any real exact-support $\nssp$ matrix.\\
+\leanlink{nssp\_arc\_bound\_of\_connected} &
+$|E|\geq2n-1$ for a connected support allowing $\nssp$.\\
+\leanlink{requires\_connected} & A requiring support is weakly connected.\\
+\leanlink{endpoint\_requires}, \leanlink{endpoint\_attainment} &
+The endpoint-looped double path requires $\nssp$ and has $2n-1$ arcs.\\
+\leanlink{result} & The universal all-positive-order requiring minimum.\\
+\bottomrule
+\end{tabularx}
+\end{center}
+The main theorem and its mathematical deductions have written proofs above. The $c$-component
+form, the equality isomorphism and the explicit source-coverage
+corollaries are written deductions; they are not additional named
+declarations in that file. The accompanying \texttt{verify.py} checks
+finite integer matrices by exact rational and finite-field arithmetic.
+Its finite ranges are stated in \texttt{verification.json}; the
+universal statements follow from the proofs, not from those samples.
+
+\begin{thebibliography}{9}
+\bibitem{KO}
+S. Koljan\v{c}i\'{c} and P. Oblak,
+\emph{Combinatorial aspects of the nonsymmetric strong spectral property
+for graphs}, Electronic Journal of Linear Algebra \textbf{42} (2026),
+755--779. \href{https://doi.org/10.13001/ela.2026.10523}{doi:10.13001/ela.2026.10523}.
+Versioned preprint: \href{https://arxiv.org/abs/2604.21552v1}{arXiv:2604.21552v1}.
+\bibitem{Paths}
+Carptopus, \emph{Spectral separation and the non-symmetric strong spectral
+property for looped double paths}, MathExplore Notes, v0.1-beta,
+19 August 2026, Theorem 6.1 and Corollary 6.2.
+\href{https://github.com/Carptopus/MathExplore-Notes/blob/e57ee007380cbc351eb371d8e991303cab5f1e48/research/nssp-looped-double-paths/nssp-looped-double-paths.tex}{Commit-pinned mathematical text}.
+\bibitem{Formal}
+\emph{KoljancicOblakMinimumArcs}, in \texttt{trureturing},
+commit \texttt{cc684e6326490f9173bfefcadb0294ee6ccbb0b5},
+\leanlink{Lean source}.
+\bibitem{Arav}
+M. Arav, F.\,J. Hall, H. van der Holst, Z. Li, A. Mathivanan,
+J. Pan, H. Xu and Z. Yang,
+\emph{Advances on similarity via transversal intersection of manifolds},
+Linear Algebra and its Applications \textbf{721} (2025), 102--121.
+\href{https://doi.org/10.1016/j.laa.2024.05.013}{doi:10.1016/j.laa.2024.05.013}.
+\end{thebibliography}
+\medskip
+\noindent\small\textcopyright\ 2026 Haobo Ma and Wenlin Zhang.
+This note is licensed under
+\href{https://creativecommons.org/licenses/by/4.0/}{Creative Commons Attribution 4.0 International (CC BY 4.0)}.
+\end{document}

@@ -1,0 +1,40 @@
+{
+  "generated_paths": [
+    "CHANGELOG.md",
+    "CITATION.cff",
+    "CONTRIBUTING.md",
+    "LICENSES/CC-BY-4.0.txt",
+    "README.md",
+    "formalization/nodes.json",
+    "manuscript/README.md",
+    "manuscript/SHA256SUMS",
+    "manuscript/claim-evidence.json",
+    "manuscript/metadata.json",
+    "manuscript/note.pdf",
+    "manuscript/note.tex",
+    "manuscript/verification.json",
+    "manuscript/verify.py",
+    "paper.json",
+    "paper.pdf"
+  ],
+  "generator_version": "0.1.0",
+  "sha256": {
+    "CHANGELOG.md": "7b342edff604b3466f5da62e7057ae7089005913f4c3434c5236d2e48bccb4d6",
+    "CITATION.cff": "d11c3c086c70cf489fdf2cc57a275d31c4bd088fa58f171729cc916ab70da578",
+    "CONTRIBUTING.md": "fafd66e63160b2a88f433af56d2af2b0f7bf6ed2fd417d46b54446ce07c627ff",
+    "LICENSES/CC-BY-4.0.txt": "58230517b7895aa219ff46a6ed63e67057a1582fb9ea054b16728a8c13525650",
+    "README.md": "b12fa6632e510e0d45e7cbce465fceb7621afc30feeafe0d08c8d96365a92dca",
+    "formalization/nodes.json": "bfd7f9bf150a704134ae450a996e6e7b2bb9ee168fc83ba23e296fe4994f405b",
+    "manuscript/README.md": "47845e2f47c543b59bdf2a92d4c3dda202e912d56993e119c056e3d33b59c012",
+    "manuscript/SHA256SUMS": "422439f3849f94c78edbfb025aa0d4822a46c8185a398b47a8ff01d4f33219fd",
+    "manuscript/claim-evidence.json": "3d2e46d197e321976697cf705b9ab14ffc307c0a559f0916f4981d570cbf3aec",
+    "manuscript/metadata.json": "24d0020dbf4d39a3350823f04c10de669e08b489dbffd318295ff2db1cc5833a",
+    "manuscript/note.pdf": "c54c7ad4aae7872c3e36d9f71ff43fe03c910aab3c3262ea84a414826f6fb027",
+    "manuscript/note.tex": "c282bed3aaaff30635b81d8aaed4267ce34e2737e66cd54f0da1763bba264369",
+    "manuscript/verification.json": "bdc661912a54d8247a9745130e6e877b2dd7812d9445637e74cd570e073da6d7",
+    "manuscript/verify.py": "2cac6146ca7be6bf82536e381934f1449346852b53cba0f86916a036398065cb",
+    "paper.json": "6094dac2a0ccf96b70395e08fae7f56d73721d65513442bbe202c7a2dfd41c2e",
+    "paper.pdf": "c54c7ad4aae7872c3e36d9f71ff43fe03c910aab3c3262ea84a414826f6fb027"
+  },
+  "snapshot_identity": "cf7dddc7adeedae37e3b7aa89874f0211d88d227e9e87e76ca70c780fd1b9b3d"
+}

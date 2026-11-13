@@ -1,0 +1,62 @@
+{
+  "files": {
+    "pdf": {
+      "bytes": 78458,
+      "matches_public": null,
+      "path": "paper.pdf",
+      "public_sha256": null,
+      "sha256": "c54c7ad4aae7872c3e36d9f71ff43fe03c910aab3c3262ea84a414826f6fb027"
+    },
+    "source": {
+      "bytes": 92531,
+      "matches_public": null,
+      "path": "manuscript/",
+      "public_sha256": null,
+      "sha256": "9c9d372fc4c851fa947a403e952ecdb4c03e29d15950b4be56309fd910bae0ed"
+    }
+  },
+  "source_identity": "Mathesis public projection",
+  "work": {
+    "abstract_text": "Koljančić–Oblak's Problem 1.8, Electronic Journal of Linear Algebra 42 (2026), p. 759, has an affirmative answer: the minimum number of arcs in an n-vertex digraph requiring the nonsymmetric strong spectral property is 2n−1 for every n≥1. By their identification with Arav et al.'s Problem 6.2, this also gives the minimum 2n−1 of nonzero entries in a zero–nonzero pattern requiring the similarity-transversality property (STP). We give a self-contained exposition of the centralizer–incidence proof formalized in Lean. More generally, every real matrix with this property and with c weak support components has at least 2n−c nonzero entries. For connected supports, even allowing one such matrix forces 2n−1 arcs. Together with the endpoint-looped double path of Koljančić–Oblak, this also answers both questions in their Problem 2.9 (p. 764). The endpoint construction is prior work.",
+    "authors": [
+      {
+        "affiliation": "ChronoAI Pte Ltd, Singapore",
+        "name": "Haobo Ma"
+      },
+      {
+        "affiliation": "National University of Singapore; ChronoAI Pte Ltd, Singapore",
+        "name": "Wenlin Zhang"
+      }
+    ],
+    "concept_doi": "10.5281/zenodo.23904481",
+    "current_version": 3,
+    "doi": "10.5281/zenodo.23904482",
+    "lean_source": {
+      "revision": "cc684e6326490f9173bfefcadb0294ee6ccbb0b5",
+      "url": "https://github.com/the-omega-institute/trureturing/blob/cc684e6326490f9173bfefcadb0294ee6ccbb0b5/D5/S3/Combinatorics/SpectralGraph/KoljancicOblakMinimumArcs.lean"
+    },
+    "license": "CC-BY-4.0",
+    "msc": [],
+    "pdf": {
+      "url": "/api/v1/collected-papers/koljancic-oblak-2026-nssp-minimum-arcs-problem-1-8/files/pdf?version=3"
+    },
+    "previous_version": null,
+    "publication": "public",
+    "published_on": "2026-11-05T08:03:32.482916859Z",
+    "record": "koljancic-oblak-2026-nssp-minimum-arcs-problem-1-8",
+    "repository_name": "6aec3854f194c81629beec0a",
+    "source": {
+      "url": "/api/v1/collected-papers/koljancic-oblak-2026-nssp-minimum-arcs-problem-1-8/files/source?version=3"
+    },
+    "title": "The 2n−1 arc minimum in Koljančić–Oblak, Problem 1.8 (p. 759)",
+    "versions": [
+      {
+        "previous_version": null,
+        "published_on": "2026-11-05T08:03:32.482916859Z",
+        "revision": "3",
+        "version": 3
+      }
+    ],
+    "work": "koljancic-oblak-2026-nssp-minimum-arcs-problem-1-8"
+  }
+}

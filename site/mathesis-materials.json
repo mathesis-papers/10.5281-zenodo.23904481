@@ -1,0 +1,14 @@
+{
+  "schema": "mathesis.materials.v1",
+  "work": "koljancic-oblak-2026-nssp-minimum-arcs-problem-1-8",
+  "version": 3,
+  "repository_url": "https://github.com/mathesis-papers/6aec3854f194c81629beec0a",
+  "site_url": "https://papers.trureturing.org/6aec3854f194c81629beec0a/",
+  "doi": "10.5281/zenodo.23904482",
+  "reading": {
+    "en": "https://papers.trureturing.org/6aec3854f194c81629beec0a/en/",
+    "zh": "https://papers.trureturing.org/6aec3854f194c81629beec0a/zh/"
+  },
+  "slides": [],
+  "visualizations": []
+}
