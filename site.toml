@@ -1,0 +1,14 @@
+[site]
+repo = "mathesis-papers/10.5281-zenodo.23904481"
+base_url = "https://papers.trureturing.org/10.5281-zenodo.23904481/"
+post_build = ["python3", "-c", "from pathlib import Path\nimport runpy\nscript = Path(\"docs/layer-mathesis/scripts/site.py\")\nif script.is_file():\n    runpy.run_path(str(script), run_name=\"__main__\")\nelse:\n    print(\"Mathesis post-build skipped: layer script is absent from repository being built\")\n"]
+languages = ["zh", "en"]
+[site.title]
+zh = "The 2n−1 arc minimum in Koljančić–Oblak, Problem 1.8 (p. 759)"
+en = "The 2n−1 arc minimum in Koljančić–Oblak, Problem 1.8 (p. 759)"
+[trureturing]
+repo = "the-omega-institute/trureturing"
+branch = "dev"
+[books]
+order = ["koljancic-oblak-2026-nssp-minimum-arcs-problem-1-8"]
+hide = []

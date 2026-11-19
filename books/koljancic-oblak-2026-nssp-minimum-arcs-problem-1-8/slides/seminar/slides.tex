@@ -1,0 +1,266 @@
+\documentclass{beamer}
+\input{tbook-deck}
+\title{为什么恰好需要 $2n-1$ 条弧}
+\author{Haobo Ma\inst{1} \and Wenlin Zhang\inst{1,2}}
+\institute{\inst{1}ChronoAI Pte Ltd, Singapore\\\inst{2}National University of Singapore, Singapore}
+\date{Version 3 (2026)}
+\begin{document}
+% Manuscript: Title and author record, version 3
+\begin{frame}
+\titlepage
+\note{本报告解释最小弧数定理及其证明机制。Haobo Ma 的机构仅为 ChronoAI；Wenlin Zhang 的机构为 ChronoAI 及 NUS。}
+\end{frame}
+% Manuscript: Sections 1--5, argument order
+\begin{frame}{路线}
+\tableofcontents
+\note{从问题与量词出发，转入平衡流计数，再证明连通性与达到下界，最后说明推论和证据范围。}
+\end{frame}
+\section{问题}
+% Manuscript: Section 1; Section 4
+\begin{frame}{尽量少的箭头，保证所有权重都有效}
+\[
+ \underset{\circlearrowleft}{1}\rightleftarrows2\rightleftarrows3\rightleftarrows4
+\]
+\begin{itemize}
+\item 四个点，七条弧：$2(4-1)+1=7$。
+\item 每个规定权重都是非零实数，符号不限。
+\item 最少多少条弧能保证\emph{每种}填法都有 nSSP？
+\end{itemize}
+\small 端点构造：S. Koljančić 与 P. Oblak，定理 5.5（$m=1$），第 771 页。
+\note{先把箭头解释成方形数表的非零位置。相反箭头分开计数，自环计一次，不含重弧。构造属于先前工作；核心是普遍下界。先说明 $2(n-1)+1=2n-1$，再引入向量空间。}
+\end{frame}
+% Manuscript: Theorem 1, Section 1 (unrestricted clause)
+\begin{frame}{每个正阶的准确答案}
+\begin{bookresult}{thm-minimum}
+对每个 $n\geq1$，所有要求 nSSP 的支撑都至少有 $2n-1$ 条弧，并在同一阶数存在恰有 $2n-1$ 条弧的要求支撑。
+\end{bookresult}
+\begin{itemize}
+\item 下界：把可交换矩阵变成平衡流。
+\item 达到下界：端点带自环的双向路径。
+\end{itemize}
+\note{尽早给出答案。此块准确陈述无连通限制的要求最小值，两个强连通最小值在后面另述。原问题为 Koljančić--Oblak 问题 1.8，期刊第 759 页。}
+\end{frame}
+% Manuscript: Section 1, equation (1)
+\begin{frame}{nSSP 检验什么}
+令 $E=\{(i,j):a_{ij}\ne0\}$。对每个实矩阵 $F$，
+\[
+ AF=FA,\qquad a_{ij}f_{ji}=0\quad\text{对所有 }i,j
+\]
+\[
+ \Longrightarrow\quad F=0.
+\]
+\begin{itemize}
+\item 可交换表示两次线性作用的次序可以互换。
+\item 每条弧迫使 $F$ 的反向位置为零。
+\item 没有额外对角线、迹或对称性条件。
+\end{itemize}
+\note{原文写 $A\circ X=0$ 与 $AX^{\mathsf T}=X^{\mathsf T}A$。令 $F=X^{\mathsf T}$；转置在所有实方阵上为双射。弧 $i\to j$ 对应 $a_{ij}\ne0$，因此强迫 $f_{ji}=0$。}
+\end{frame}
+% Manuscript: Section 3, example after Lemma 6
+\begin{frame}{允许与要求不同}
+\[
+ A=\operatorname{diag}(1,2),\qquad A'=I_2.
+\]
+\begin{itemize}
+\item 支撑相同：两个互不相连的自环。
+\item $A$ 有 nSSP：可交换消去 $F$ 的非对角元，自环消去对角元。
+\item $A'$ 不满足：仅一个非对角位置为 $1$ 的 $F$ 就是障碍。
+\end{itemize}
+\alert{这个支撑允许 nSSP，却不要求 nSSP。}
+\note{写 $F=\left(\begin{smallmatrix}p&q\\r&s\end{smallmatrix}\right)$。自环使 $p=s=0$，与 $\operatorname{diag}(1,2)$ 可交换使 $q=2q$、$2r=r$。对 $I_2$，取 $f_{12}=1$ 即可。这解释了允许下界为什么不能去掉连通条件。}
+\end{frame}
+\section{平衡流}
+% Manuscript: Theorem 3, proof
+\begin{frame}{从可交换到守恒}
+对 $F\in\mathcal Z(A)=\{F:AF=FA\}$，记录
+\[
+ z_{ij}=a_{ij}f_{ji}\quad ((i,j)\in E).
+\]
+\[
+ \sum_i z_{iv}=(FA)_{vv},\qquad
+ \sum_j z_{vj}=(AF)_{vv}.
+\]
+所以每个点流入与流出相等。
+\begin{block}{为什么不丢信息}
+若全部 $z_{ij}=0$，nSSP 给出 $F=0$，故线性记录为单射。
+\end{block}
+\small 流允许为负，自环自动平衡。
+\note{两个可交换矩阵记录相同，相减后记录为零，因此它们相同。这才是单射。定义 $B$ 的弧列为 $e_j-e_i$，平衡就是 $Bz=0$。此处只使用可交换方程的对角位置。}
+\end{frame}
+% Manuscript: Section 2; worked illustration of incidence formula
+\begin{frame}{小路径上的三个自由数}
+\[
+ \underset{\circlearrowleft}{1}\rightleftarrows2\rightleftarrows3
+\]
+\[
+ z_{12}=z_{21},\qquad z_{23}=z_{32}.
+\]
+\begin{itemize}
+\item 任意选取 $z_{11},z_{12},z_{23}$。
+\item 中间点的平衡随后自动满足。
+\item 五个弧变量，两个独立条件：
+\end{itemize}
+\[
+ \dim\ker B=5-3+1=3.
+\]
+\note{将维数解释成独立实数选择的个数。这个例子帮助理解计数，但不是一般定理的证明。自环的关联列为零，所以提供一个自由流。}
+\end{frame}
+% Manuscript: Theorem 3, Section 2
+\begin{frame}{完整的维数链}
+\begin{bookresult}{thm-cycle}
+对具有精确支撑的 nSSP 矩阵，若弱分量数为 $c$，则
+\[
+ n\leq\dim\mathcal Z(A)\leq\dim\ker B,
+\]
+\[
+ \dim\ker B=m-n+c,\qquad m\geq2n-c.
+\]
+\end{bookresult}
+\small 孤立点计入分量；不要求正权或可对角化。
+\note{中心化子下界来自循环模分解，不能假定 $A$ 的幂总是独立。关联矩阵方面，$\ker B^{\mathsf T}$ 恰为每个分量上的常值函数，维数为 $c$。完整链为书面推论，不能把这个更宽的陈述仅归于秩形式声明。}
+\end{frame}
+% Manuscript: Theorem 3 rank consequence; Corollary 4, first clause
+\begin{frame}{公开形式陈述的准确秩结论}
+\begin{bookresult}{thm-rank}
+若 $A$ 有精确支撑 $E$ 及 nSSP，则
+\[
+ n+\operatorname{rank}B\leq |E|.
+\]
+\end{bookresult}
+\begin{bookresult}{cor-bound}
+若 $n\geq1$，弱连通支撑只要允许 nSSP，就至少有 $2n-1$ 条弧。
+\end{bookresult}
+\note{形式连通条件说，沿每条弧取相同值的实顶点函数必为常数；非空有限图上这就是弱连通。选取允许性的见证矩阵即可使用定理。于是至多有 $2n-2$ 个连通位置的符号模式同样不允许 nSSP。}
+\end{frame}
+\section{达到下界}
+% Manuscript: Lemmas 5 and 6, Section 3
+\begin{frame}{要求支撑为什么连通}
+\begin{bookresult}{lem-connected}
+非空顶点集上的要求 nSSP 支撑必弱连通。
+\end{bookresult}
+\begin{enumerate}
+\item 没有自环的分量给出非零对角指示矩阵障碍。
+\item 若有两组分量，调节各组自环，使两组都有特征值 $1$。
+\item 非零的 $Cu=u$、$v^{\mathsf T}D=v^{\mathsf T}$ 给出跨组障碍 $uv^{\mathsf T}$。
+\end{enumerate}
+\note{每组都有自环。利用 $\det(I-A(\epsilon,t))=u(\epsilon)-tv(\epsilon)$ 及 $u(0)=v(0)=1$，取充分小的非零 $\epsilon$、$t=u/v$，不会删掉规定条目。障碍只需给出一种坏实现，就足以否定要求。完整代数见附录和正文。}
+\end{frame}
+% Manuscript: Lemma 7, Section 4
+\begin{frame}{达到下界的构造}
+\begin{bookresult}{lem-path}
+对每个 $n\geq1$，端点带环的双向路径对任意非零实权重都要求 nSSP。
+\end{bookresult}
+\[
+ |E|=2(n-1)+1=2n-1.
+\]
+\begin{itemize}
+\item 沿路径的双向弧使其强连通。
+\item $n=1$ 时一个自环即足够。
+\end{itemize}
+\small 先前构造：Koljančić--Oblak，定理 5.5 的 $m=1$ 情形。
+\note{直接标明上界构造的先前归属。它允许任意符号，不只针对对称或正权矩阵。单点时强连通采用长度零路径约定。}
+\end{frame}
+% Manuscript: Lemma 7, odd-offset proof
+\begin{frame}{零如何传播}
+写 $a_{11}=d$、$a_{i,i+1}=u_i$、$a_{i+1,i}=\ell_i$，均非零。
+\begin{enumerate}
+\item 支撑条件使偏移 $1$ 及 $f_{11}$ 为零。
+\item 对奇数 $k\geq3$，可交换及较小奇数偏移为零给出
+\[
+ \ell_i f_{i,i+k}=\ell_{i+k}f_{i+1,i+k+1},
+\]
+\[
+ 1\leq i\leq n-k,\qquad \ell_n=0.
+\]
+\item 从右边界开始，递减 $i$。
+\item 转置处理下偏移；自环再消去第一列。
+\end{enumerate}
+\note{将 $[1,n]$ 外条目置零。比较 $(i+1,i+k)$ 位置的可交换方程，偏移 $k-2$ 的项消失。$i=n-k$ 处右项为零，只除以非零 $\ell_i$。奇数 $i\geq3$ 时，$(i,1)$ 方程化为 $0=df_{i1}$，其余项处于奇数偏移。}
+\end{frame}
+% Manuscript: Lemma 7, final basis argument
+\begin{frame}{一列为零为何足够}
+\[
+ e_1,\ Ae_1,\ \ldots,\ A^{n-1}e_1
+\]
+构成基：对 $0\leq k<n$，$A^ke_1$ 最后可能非零的坐标为
+\[
+ (A^ke_1)_{k+1}=\ell_1\cdots\ell_k\ne0.
+\]
+由 $Fe_1=0$ 及 $FA=AF$，
+\[
+ FA^ke_1=A^kFe_1=0\qquad(0\leq k<n).
+\]
+$F$ 消灭整组基，所以 $F=0$。
+\note{$k=0$ 时空积等于 $1$。关于 $k$ 归纳，三对角结构使每次相乘至多到达一个新坐标，新系数乘上 $\ell_{k+1}$。因此不需要算特征值就能证明基的结论。}
+\end{frame}
+\section{推论}
+% Manuscript: Theorem 1, remaining clauses; source Problem 2.9
+\begin{frame}{两个强连通结论}
+\begin{bookresult}{thm-strong}
+对每个 $n\geq1$，强连通的要求与允许 nSSP 两种最小弧数均为 $2n-1$。
+\end{bookresult}
+\begin{itemize}
+\item 下界：强连通蕴含弱连通。
+\item 上界：同一个端点带环双向路径。
+\item 一阶使用长度为零的路径。
+\end{itemize}
+\note{这回答 Koljančić--Oblak 问题 2.9（期刊第 764 页）的两问。推论复用形式连通下界与端点定理，但库中的无连通限制最小值陈述本身没有强连通条款。}
+\end{frame}
+% Manuscript: Corollary 4, equality clause; Section 5
+\begin{frame}{等号与结论边界}
+\begin{bookresult}{cor-equality}
+对 $n\geq1$、$m=2n-1$ 的连通 nSSP 矩阵，
+\[
+ \dim\mathcal Z(A)=n,\qquad T_A:\mathcal Z(A)\simeq\ker B.
+\]
+\end{bookresult}
+\begin{itemize}
+\item 此论证没有分类全部等号支撑。
+\item 不连通的允许支撑可以用更少弧。
+\item 一般符号模式分类不在此结论范围内。
+\end{itemize}
+\note{有限维同维空间之间的单射必为满射。这里是实向量空间同构，并非图结构分类。区分此书面等号推论与形式下界。}
+\end{frame}
+% Manuscript: Bibliography; Section 5
+\begin{frame}{来源及下一步贡献}
+\small
+\begin{itemize}
+\item Ma--Zhang，第 3 版：\href{https://doi.org/10.5281/zenodo.23904482}{10.5281/zenodo.23904482}。
+\item Koljančić--Oblak：\href{https://doi.org/10.13001/ela.2026.10523}{10.13001/ela.2026.10523}，问题 1.8、2.9 及先前端点构造。
+\item Arav 等：\href{https://doi.org/10.1016/j.laa.2024.05.013}{10.1016/j.laa.2024.05.013}；STP 对应依据所引原文。
+\item Carptopus，MathExplore Notes（2026 年 8 月 19 日）：先前路径允许性结论。
+\end{itemize}
+\normalsize 复用已有证明：公开中心化子引理，补齐分量与等号公式，推出强连通最小值。
+\note{引导听众使用正文中的统一参与请求。不要把端点构造或 Carptopus 的先前路径分类当作新成果。本报告讲最小弧数，不声称重新证明 nSSP 与 STP 的等价性。}
+\end{frame}
+\appendix
+\section{补充}
+% Manuscript: Lemma 5, Section 3
+\begin{frame}{调节自环而不删弧}
+\begin{bookresult}{lem-loop}
+含自环的支撑有以 $1$ 为特征值的精确实实现。
+\end{bookresult}
+\[
+ A(\epsilon,t)=\epsilon N+t e_re_r^{\mathsf T},
+\]
+\[
+ \det(I-A)=u(\epsilon)-t v(\epsilon),\qquad u(0)=v(0)=1.
+\]
+取充分小的 $\epsilon\ne0$ 及 $t=u(\epsilon)/v(\epsilon)\ne0$，所有规定条目均保持非零。
+\note{$N$ 在除选定自环外的支撑位置为 $1$，其余为零。余子式 $v$ 在零处为 $1$；一阶的空余子式也为 $1$。由连续性取邻域，使 $u,v$ 均保持非零。这是存在性论证，不保证预先指定的符号。}
+\end{frame}
+% Manuscript: Lemma 2, Section 2
+\begin{frame}{中心化子维数的来源}
+\begin{bookresult}{lem-centralizer}
+任意实 $n\times n$ 矩阵满足 $\dim\mathcal Z(A)\geq n$。
+\end{bookresult}
+\[
+ \mathbb R^n\simeq\bigoplus_r\mathbb R[t]/(p_r),\qquad
+ \sum_r\deg p_r=n.
+\]
+每个循环块内乘以任意剩余类都与 $t$ 可交换；在 $1$ 的剩余类上求值可取回各乘数，因而得到到 $\mathcal Z(A)$ 的单射。
+\note{由 Cayley--Hamilton，这是有限生成挠 $\mathbb R[t]$-模，适用主理想整环的循环分解。这个下界已有内部形式证明，共享请求只需公开并复用该结论，无需另建证明。$n=0$ 时两维数均为零。}
+\end{frame}
+% Manuscript: Section 5, exact statement evidence
+\FormalVerification
+\end{document}

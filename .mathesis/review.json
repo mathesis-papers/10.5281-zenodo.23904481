@@ -1,0 +1,64 @@
+{
+  "results": {
+    "thm-minimum": {
+      "comparison_verdict": "same",
+      "compared_public_gid": "D5/S3/Combinatorics/SpectralGraph/KoljancicOblakMinimumArcs.result",
+      "comparison_commit": "8a24ea4e79de962725aab9d9b49cc605fcc211d8",
+      "scope": "Source Theorem 1 unrestricted requiring-minimum clause only: every n>=1, all exact real supports, lower bound and same-order attainment. MinimumArcs unfolds to these exact quantifiers. The strongly connected clauses are separately mapped, not included in this citation."
+    },
+    "thm-strong": {
+      "comparison_verdict": "variant",
+      "compared_public_gid": "D5/S3/Combinatorics/SpectralGraph/KoljancicOblakMinimumArcs.result",
+      "comparison_commit": "8a24ea4e79de962725aab9d9b49cc605fcc211d8",
+      "scope": "Remaining strongly connected requiring/allowing clauses of source Theorem 1. Public result proves unrestricted requiring minimum, not the restricted minima. Reuse nssp_arc_bound_of_connected, endpoint_requires and endpoint_attainment; directed strong-connectivity bridge and restricted attainment remain to expose."
+    },
+    "lem-centralizer": {
+      "comparison_verdict": "none",
+      "compared_public_gid": null,
+      "comparison_commit": "8a24ea4e79de962725aab9d9b49cc605fcc211d8",
+      "scope": "Source Lemma 2, all real n-by-n matrices including n=0. Exact private matrix_centralizer_finrank_ge is present in inspected source and frozen state, as is its private module-endomorphism supplier. The public resolver excludes private names. No missing mathematical proof is alleged: request only public exposure/reuse, no reconstruction."
+    },
+    "thm-cycle": {
+      "comparison_verdict": "variant",
+      "compared_public_gid": "D5/S3/Combinatorics/SpectralGraph/KoljancicOblakMinimumArcs.nssp_centralizer_cycle_bound",
+      "comparison_commit": "8a24ea4e79de962725aab9d9b49cc605fcc211d8",
+      "scope": "Source Theorem 3 full chain n<=dim Z(A)<=dim ker B=m-n+c and m>=2n-c, loops and isolated vertices included. Public conclusion only n+rank(B)<=m. Its proof already constructs supportReadout, injectivity and boundary-zero via private helpers. Request remaining public dimension chain, c-component incidence rank identity and equality deduction, reusing helpers."
+    },
+    "thm-rank": {
+      "comparison_verdict": "same",
+      "compared_public_gid": "D5/S3/Combinatorics/SpectralGraph/KoljancicOblakMinimumArcs.nssp_centralizer_cycle_bound",
+      "comparison_commit": "8a24ea4e79de962725aab9d9b49cc605fcc211d8",
+      "scope": "Explicitly narrower expository rank-form consequence of source Theorem 3, not a claim that this GID states its full dimension chain. Exact real support and HasNSSP imply n+rank(incidence E)<=card E for every natural n."
+    },
+    "cor-bound": {
+      "comparison_verdict": "same",
+      "compared_public_gid": "D5/S3/Combinatorics/SpectralGraph/KoljancicOblakMinimumArcs.nssp_arc_bound_of_connected",
+      "comparison_commit": "8a24ea4e79de962725aab9d9b49cc605fcc211d8",
+      "scope": "Only connected allowing-bound clause of source Corollary 4. For n>=1 a witness A with ExactSupport and HasNSSP yields 2*n-1<=card E. ConnectedSupport is the algebraic edgewise-constant-function formulation of weak connectivity. Sign-pattern obstruction is an explicit restriction, not an extra badge."
+    },
+    "cor-equality": {
+      "comparison_verdict": "variant",
+      "compared_public_gid": "D5/S3/Combinatorics/SpectralGraph/KoljancicOblakMinimumArcs.nssp_arc_bound_of_connected",
+      "comparison_commit": "8a24ea4e79de962725aab9d9b49cc605fcc211d8",
+      "scope": "Only equality clause of source Corollary 4: weak connectivity, n>=1, m=2n-1 imply dim Z(A)=n and readout isomorphism. Compared public theorem gives lower bound, not equality spaces or surjectivity. Immediate consequence shares request with parent component-chain theorem."
+    },
+    "lem-loop": {
+      "comparison_verdict": "same",
+      "compared_public_gid": "D5/S3/Combinatorics/SpectralGraph/KoljancicOblakMinimumArcs.loop_support_eigenvalue_one",
+      "comparison_commit": "8a24ea4e79de962725aab9d9b49cc605fcc211d8",
+      "scope": "Source Lemma 5: choose an existing loop r and obtain exact real A with det(I-A)=0. Over R finite square matrices this is eigenvalue 1. Loop hypothesis forces positive order; includes n=1 and empty cofactor 1. No sign restriction on chosen realization."
+    },
+    "lem-connected": {
+      "comparison_verdict": "same",
+      "compared_public_gid": "D5/S3/Combinatorics/SpectralGraph/KoljancicOblakMinimumArcs.requires_connected",
+      "comparison_commit": "8a24ea4e79de962725aab9d9b49cc605fcc211d8",
+      "scope": "Source Lemma 6 on nonempty vertices. Requires and ExactSupport quantify over every real weighting. ConnectedSupport states all edgewise-constant real functions are constant; on nonempty finite vertices this is weak connectivity. Lean also permits n=0 with this vacuous algebraic condition; no graph-connectivity assertion at zero order is imported."
+    },
+    "lem-path": {
+      "comparison_verdict": "same",
+      "compared_public_gid": "D5/S3/Combinatorics/SpectralGraph/KoljancicOblakMinimumArcs.endpoint_requires",
+      "comparison_commit": "8a24ea4e79de962725aab9d9b49cc605fcc211d8",
+      "scope": "Source Lemma 7, all n>=1, all arbitrary nonzero real weights. endpointSupport uses Fin n with loop (0,0) and bidirected consecutive edges, exactly the one-indexed P_(n,{1}). Requires unfolds to the complete source claim. n=1 included; endpoint construction credited to Koljancic–Oblak."
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "schema": "mathesis.collection-history.v1",
+  "sha256": {
+    "versions/v3/.mathesis/generated.json": "58272de86c8c4993446c677ac397eb8b2c38db3786c7632e4546a499f6d80c36",
+    "versions/v3/CHANGELOG.md": "7b342edff604b3466f5da62e7057ae7089005913f4c3434c5236d2e48bccb4d6",
+    "versions/v3/CITATION.cff": "d11c3c086c70cf489fdf2cc57a275d31c4bd088fa58f171729cc916ab70da578",
+    "versions/v3/CONTRIBUTING.md": "fafd66e63160b2a88f433af56d2af2b0f7bf6ed2fd417d46b54446ce07c627ff",
+    "versions/v3/LICENSES/CC-BY-4.0.txt": "58230517b7895aa219ff46a6ed63e67057a1582fb9ea054b16728a8c13525650",
+    "versions/v3/README.md": "b12fa6632e510e0d45e7cbce465fceb7621afc30feeafe0d08c8d96365a92dca",
+    "versions/v3/formalization/nodes.json": "bfd7f9bf150a704134ae450a996e6e7b2bb9ee168fc83ba23e296fe4994f405b",
+    "versions/v3/manuscript/README.md": "47845e2f47c543b59bdf2a92d4c3dda202e912d56993e119c056e3d33b59c012",
+    "versions/v3/manuscript/SHA256SUMS": "422439f3849f94c78edbfb025aa0d4822a46c8185a398b47a8ff01d4f33219fd",
+    "versions/v3/manuscript/claim-evidence.json": "3d2e46d197e321976697cf705b9ab14ffc307c0a559f0916f4981d570cbf3aec",
+    "versions/v3/manuscript/metadata.json": "24d0020dbf4d39a3350823f04c10de669e08b489dbffd318295ff2db1cc5833a",
+    "versions/v3/manuscript/note.pdf": "c54c7ad4aae7872c3e36d9f71ff43fe03c910aab3c3262ea84a414826f6fb027",
+    "versions/v3/manuscript/note.tex": "c282bed3aaaff30635b81d8aaed4267ce34e2737e66cd54f0da1763bba264369",
+    "versions/v3/manuscript/verification.json": "bdc661912a54d8247a9745130e6e877b2dd7812d9445637e74cd570e073da6d7",
+    "versions/v3/manuscript/verify.py": "2cac6146ca7be6bf82536e381934f1449346852b53cba0f86916a036398065cb",
+    "versions/v3/paper.json": "6094dac2a0ccf96b70395e08fae7f56d73721d65513442bbe202c7a2dfd41c2e",
+    "versions/v3/paper.pdf": "c54c7ad4aae7872c3e36d9f71ff43fe03c910aab3c3262ea84a414826f6fb027",
+    "versions/v3/source.archive": "9c9d372fc4c851fa947a403e952ecdb4c03e29d15950b4be56309fd910bae0ed"
+  },
+  "source_commit": "eac856c529984b20950fc9d3f801fb9fceeae93c",
+  "work": "koljancic-oblak-2026-nssp-minimum-arcs-problem-1-8"
+}

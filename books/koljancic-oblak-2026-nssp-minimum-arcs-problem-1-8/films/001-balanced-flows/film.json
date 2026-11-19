@@ -1,0 +1,29 @@
+{
+  "duration": "2:39",
+  "id": "001-balanced-flows",
+  "lean": [
+    "D5/S3/Combinatorics/SpectralGraph/KoljancicOblakMinimumArcs.result"
+  ],
+  "narration": {
+    "engine": "Kokoro-82M v1.0 (onnx)",
+    "language": "en",
+    "voice": "af_heart"
+  },
+  "outputs": {
+    "cover": "koljancic-oblak-2026-nssp-minimum-arcs-problem-1-8_001_cover.jpg",
+    "narrated_720p": "koljancic-oblak-2026-nssp-minimum-arcs-problem-1-8_001_720p_narrated.mp4"
+  },
+  "publication_basis": "pinned",
+  "released": "2026-11-16",
+  "resolution": "1280x720@30",
+  "style": "trureturing cyberpunk · deterministic canvas",
+  "subject": "https://github.com/the-omega-institute/trureturing",
+  "subtitles": [
+    "zh",
+    "en"
+  ],
+  "summary": "Why nSSP requires 2n−1 arcs: exact supports, every-weight quantifiers, balanced flows and the endpoint-looped path.",
+  "summary_zh": "从精确支撑、全称权重、平衡流与端点带环路径，解释 nSSP 为何需要 2n−1 条弧。",
+  "title": "Counting arcs through balanced flows",
+  "title_zh": "从平衡流数出最少弧数"
+}

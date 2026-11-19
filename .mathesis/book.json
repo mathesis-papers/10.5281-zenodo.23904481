@@ -1,0 +1,111 @@
+{
+  "book": "koljancic-oblak-2026-nssp-minimum-arcs-problem-1-8",
+  "pending_claims": [],
+  "results": {
+    "thm-minimum": {
+      "claim": "collected:koljancic-oblak-2026-nssp-minimum-arcs-problem-1-8:3:s1",
+      "gids": [
+        "D5/S3/Combinatorics/SpectralGraph/KoljancicOblakMinimumArcs.result"
+      ],
+      "comparison_verdict": "same",
+      "compared_public_gid": "D5/S3/Combinatorics/SpectralGraph/KoljancicOblakMinimumArcs.result",
+      "comparison_commit": "8a24ea4e79de962725aab9d9b49cc605fcc211d8"
+    },
+    "thm-strong": {
+      "claim": "collected:koljancic-oblak-2026-nssp-minimum-arcs-problem-1-8:3:s1",
+      "gids": [],
+      "comparison_verdict": "variant",
+      "compared_public_gid": "D5/S3/Combinatorics/SpectralGraph/KoljancicOblakMinimumArcs.result",
+      "comparison_commit": "8a24ea4e79de962725aab9d9b49cc605fcc211d8",
+      "formalization_request": {
+        "label": "Strongly connected requiring and allowing minima",
+        "url": "https://github.com/the-omega-institute/trureturing-requests/issues/191"
+      }
+    },
+    "lem-centralizer": {
+      "claim": "collected:koljancic-oblak-2026-nssp-minimum-arcs-problem-1-8:3:s2",
+      "gids": [],
+      "comparison_verdict": "none",
+      "compared_public_gid": null,
+      "comparison_commit": "8a24ea4e79de962725aab9d9b49cc605fcc211d8",
+      "formalization_request": {
+        "label": "Expose the existing centralizer dimension lemma",
+        "url": "https://github.com/the-omega-institute/trureturing-requests/issues/189"
+      }
+    },
+    "thm-cycle": {
+      "claim": "collected:koljancic-oblak-2026-nssp-minimum-arcs-problem-1-8:3:s3",
+      "gids": [],
+      "comparison_verdict": "variant",
+      "compared_public_gid": "D5/S3/Combinatorics/SpectralGraph/KoljancicOblakMinimumArcs.nssp_centralizer_cycle_bound",
+      "comparison_commit": "8a24ea4e79de962725aab9d9b49cc605fcc211d8",
+      "formalization_request": {
+        "label": "Component dimension chain and equality consequence",
+        "url": "https://github.com/the-omega-institute/trureturing-requests/issues/190"
+      }
+    },
+    "thm-rank": {
+      "claim": "collected:koljancic-oblak-2026-nssp-minimum-arcs-problem-1-8:3:s3",
+      "gids": [
+        "D5/S3/Combinatorics/SpectralGraph/KoljancicOblakMinimumArcs.nssp_centralizer_cycle_bound"
+      ],
+      "comparison_verdict": "same",
+      "compared_public_gid": "D5/S3/Combinatorics/SpectralGraph/KoljancicOblakMinimumArcs.nssp_centralizer_cycle_bound",
+      "comparison_commit": "8a24ea4e79de962725aab9d9b49cc605fcc211d8"
+    },
+    "cor-bound": {
+      "claim": "collected:koljancic-oblak-2026-nssp-minimum-arcs-problem-1-8:3:s4",
+      "gids": [
+        "D5/S3/Combinatorics/SpectralGraph/KoljancicOblakMinimumArcs.nssp_arc_bound_of_connected"
+      ],
+      "comparison_verdict": "same",
+      "compared_public_gid": "D5/S3/Combinatorics/SpectralGraph/KoljancicOblakMinimumArcs.nssp_arc_bound_of_connected",
+      "comparison_commit": "8a24ea4e79de962725aab9d9b49cc605fcc211d8"
+    },
+    "cor-equality": {
+      "claim": "collected:koljancic-oblak-2026-nssp-minimum-arcs-problem-1-8:3:s4",
+      "gids": [],
+      "comparison_verdict": "variant",
+      "compared_public_gid": "D5/S3/Combinatorics/SpectralGraph/KoljancicOblakMinimumArcs.nssp_arc_bound_of_connected",
+      "comparison_commit": "8a24ea4e79de962725aab9d9b49cc605fcc211d8",
+      "formalization_request": {
+        "label": "Component dimension chain and equality consequence",
+        "url": "https://github.com/the-omega-institute/trureturing-requests/issues/190"
+      }
+    },
+    "lem-loop": {
+      "claim": "collected:koljancic-oblak-2026-nssp-minimum-arcs-problem-1-8:3:s5",
+      "gids": [
+        "D5/S3/Combinatorics/SpectralGraph/KoljancicOblakMinimumArcs.loop_support_eigenvalue_one"
+      ],
+      "comparison_verdict": "same",
+      "compared_public_gid": "D5/S3/Combinatorics/SpectralGraph/KoljancicOblakMinimumArcs.loop_support_eigenvalue_one",
+      "comparison_commit": "8a24ea4e79de962725aab9d9b49cc605fcc211d8"
+    },
+    "lem-connected": {
+      "claim": "collected:koljancic-oblak-2026-nssp-minimum-arcs-problem-1-8:3:s6",
+      "gids": [
+        "D5/S3/Combinatorics/SpectralGraph/KoljancicOblakMinimumArcs.requires_connected"
+      ],
+      "comparison_verdict": "same",
+      "compared_public_gid": "D5/S3/Combinatorics/SpectralGraph/KoljancicOblakMinimumArcs.requires_connected",
+      "comparison_commit": "8a24ea4e79de962725aab9d9b49cc605fcc211d8"
+    },
+    "lem-path": {
+      "claim": "collected:koljancic-oblak-2026-nssp-minimum-arcs-problem-1-8:3:s7",
+      "gids": [
+        "D5/S3/Combinatorics/SpectralGraph/KoljancicOblakMinimumArcs.endpoint_requires"
+      ],
+      "comparison_verdict": "same",
+      "compared_public_gid": "D5/S3/Combinatorics/SpectralGraph/KoljancicOblakMinimumArcs.endpoint_requires",
+      "comparison_commit": "8a24ea4e79de962725aab9d9b49cc605fcc211d8"
+    }
+  },
+  "stage": "complete",
+  "titles": {
+    "en": "The 2n−1 arc minimum in Koljančić–Oblak, Problem 1.8 (p. 759)",
+    "zh": "The 2n−1 arc minimum in Koljančić–Oblak, Problem 1.8 (p. 759)"
+  },
+  "version": 3,
+  "work": "koljancic-oblak-2026-nssp-minimum-arcs-problem-1-8"
+}

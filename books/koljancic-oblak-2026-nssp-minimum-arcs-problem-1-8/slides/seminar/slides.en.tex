@@ -1,0 +1,266 @@
+\documentclass{beamer}
+\input{tbook-deck}
+\title{Why exactly $2n-1$ arcs?}
+\author{Haobo Ma\inst{1} \and Wenlin Zhang\inst{1,2}}
+\institute{\inst{1}ChronoAI Pte Ltd, Singapore\\\inst{2}National University of Singapore, Singapore}
+\date{Version 3 (2026)}
+\begin{document}
+% Manuscript: Title and author record, version 3
+\begin{frame}
+\titlepage
+\note{This talk explains the minimum arc theorem and its mechanism. Haobo Ma is affiliated with ChronoAI only; Wenlin Zhang with ChronoAI and NUS.}
+\end{frame}
+% Manuscript: Sections 1--5, argument order
+\begin{frame}{Route}
+\tableofcontents
+\note{Start with the question and its quantifiers, count balanced flows, establish connectivity and attainment, then discuss consequences and evidence.}
+\end{frame}
+\section{Question}
+% Manuscript: Section 1; Section 4
+\begin{frame}{A guarantee with very few arrows}
+\[
+ \underset{\circlearrowleft}{1}\rightleftarrows2\rightleftarrows3\rightleftarrows4
+\]
+\begin{itemize}
+\item Four vertices, seven arcs: $2(4-1)+1=7$.
+\item Every prescribed weight is a nonzero real number.
+\item How few arcs guarantee nSSP for \emph{every} weighting?
+\end{itemize}
+\small Endpoint construction: S. Koljančić and P. Oblak, Theorem 5.5 ($m=1$), p. 771.
+\note{Introduce arcs as nonzero positions of a square table. Opposite arrows are separate arcs, loops count once, and parallel arcs are absent. The construction is prior work; the main issue is the universal lower bound. Use the formula $2(n-1)+1=2n-1$ before naming any vector spaces.}
+\end{frame}
+% Manuscript: Theorem 1, Section 1 (unrestricted clause)
+\begin{frame}{The answer, for every positive order}
+\begin{bookresult}{thm-minimum}
+For every $n\geq1$, all supports requiring nSSP have at least $2n-1$ arcs, and a requiring support with exactly $2n-1$ arcs exists at that same order.
+\end{bookresult}
+\begin{itemize}
+\item Lower bound: commuting matrices become balanced flows.
+\item Attainment: the endpoint-looped bidirected path.
+\end{itemize}
+\note{State the answer early. This block is exactly the unrestricted requiring minimum. The two strongly connected minima are presented later with their own scope. The original question is Koljančić--Oblak Problem 1.8, journal p. 759.}
+\end{frame}
+% Manuscript: Section 1, equation (1)
+\begin{frame}{What nSSP tests}
+Let $E=\{(i,j):a_{ij}\ne0\}$. For every real matrix $F$,
+\[
+ AF=FA,\qquad a_{ij}f_{ji}=0\quad\text{for all }i,j
+\]
+\[
+ \Longrightarrow\quad F=0.
+\]
+\begin{itemize}
+\item Commutation means the two actions can be interchanged.
+\item Each arc forces a reversed position of $F$ to vanish.
+\item No extra diagonal, trace, or symmetry condition.
+\end{itemize}
+\note{The source writes $A\circ X=0$ and $AX^{\mathsf T}=X^{\mathsf T}A$. Set $F=X^{\mathsf T}$; transpose is a bijection on all real square matrices. An arrow $i\to j$ enforces $f_{ji}=0$ because $a_{ij}\ne0$.}
+\end{frame}
+% Manuscript: Section 3, example after Lemma 6
+\begin{frame}{Allows is different from requires}
+\[
+ A=\operatorname{diag}(1,2),\qquad A'=I_2.
+\]
+\begin{itemize}
+\item Same support: two isolated loops.
+\item $A$ has nSSP: commutation kills the off-diagonal entries of $F$; loops kill its diagonal.
+\item $A'$ fails: a single off-diagonal entry of $F$ is a nonzero obstruction.
+\end{itemize}
+\alert{This support allows nSSP but does not require it.}
+\note{For $F=\left(\begin{smallmatrix}p&q\\r&s\end{smallmatrix}\right)$, the loop constraints give $p=s=0$ and commutation with $\operatorname{diag}(1,2)$ gives $q=2q$ and $2r=r$. With $I_2$, choose $f_{12}=1$. This example explains why connectedness cannot be omitted from the allowing bound.}
+\end{frame}
+\section{Flows}
+% Manuscript: Theorem 3, proof
+\begin{frame}{From commutation to conservation}
+For $F\in\mathcal Z(A)=\{F:AF=FA\}$, record
+\[
+ z_{ij}=a_{ij}f_{ji}\quad ((i,j)\in E).
+\]
+\[
+ \sum_i z_{iv}=(FA)_{vv},\qquad
+ \sum_j z_{vj}=(AF)_{vv}.
+\]
+Thus incoming equals outgoing at every vertex.
+\begin{block}{Why no information is lost}
+If all $z_{ij}=0$, nSSP gives $F=0$. The linear recording is injective.
+\end{block}
+\small Flows can be negative; loops balance automatically.
+\note{Subtract two commuting matrices with the same recording to prove injectivity, not just zero detection. Define $B$ with column $e_j-e_i$, so balance is $Bz=0$. Commutation is used only on its diagonal entries at this stage.}
+\end{frame}
+% Manuscript: Section 2; worked illustration of incidence formula
+\begin{frame}{Three free numbers on a small path}
+\[
+ \underset{\circlearrowleft}{1}\rightleftarrows2\rightleftarrows3
+\]
+\[
+ z_{12}=z_{21},\qquad z_{23}=z_{32}.
+\]
+\begin{itemize}
+\item Choose $z_{11},z_{12},z_{23}$ freely.
+\item Middle-vertex balance is then automatic.
+\item Five arc variables, two independent constraints:
+\end{itemize}
+\[
+ \dim\ker B=5-3+1=3.
+\]
+\note{Explain dimension as the number of independent real choices. This example teaches the count but does not prove the general theorem. The loop contributes one free flow because its incidence column is zero.}
+\end{frame}
+% Manuscript: Theorem 3, Section 2
+\begin{frame}{The complete dimension chain}
+\begin{bookresult}{thm-cycle}
+For an exact-support nSSP matrix, with $c$ weak components,
+\[
+ n\leq\dim\mathcal Z(A)\leq\dim\ker B,
+\]
+\[
+ \dim\ker B=m-n+c,\qquad m\geq2n-c.
+\]
+\end{bookresult}
+\small Count isolated vertices among the components. No positivity or diagonalizability assumption.
+\note{The centralizer lower bound comes from cyclic module decomposition, not an assumption that powers of $A$ are independent. For the incidence rank, $\ker B^{\mathsf T}$ consists of functions constant on each component and has dimension $c$. The full chain is a written deduction; do not attribute this wider displayed statement to the rank-form declaration alone.}
+\end{frame}
+% Manuscript: Theorem 3 rank consequence; Corollary 4, first clause
+\begin{frame}{The exact public rank conclusion}
+\begin{bookresult}{thm-rank}
+If $A$ has exact support $E$ and nSSP, then
+\[
+ n+\operatorname{rank}B\leq |E|.
+\]
+\end{bookresult}
+\begin{bookresult}{cor-bound}
+For $n\geq1$, a weakly connected support allowing nSSP has at least $2n-1$ arcs.
+\end{bookresult}
+\note{The formal connected condition says every real vertex function constant along each arc is globally constant; for a nonempty finite graph this is weak connectivity. An allowing witness instantiates the quantified matrix in the theorem. A sign pattern on at most $2n-2$ connected positions therefore cannot allow nSSP either.}
+\end{frame}
+\section{Sharpness}
+% Manuscript: Lemmas 5 and 6, Section 3
+\begin{frame}{Why a requiring support is connected}
+\begin{bookresult}{lem-connected}
+A support requiring nSSP on a nonempty vertex set is weakly connected.
+\end{bookresult}
+\begin{enumerate}
+\item A loopless component gives a diagonal-indicator obstruction.
+\item With two groups of components, tune one loop in each group so both have eigenvalue $1$.
+\item Nonzero $Cu=u$, $v^{\mathsf T}D=v^{\mathsf T}$ give the cross-group obstruction $uv^{\mathsf T}$.
+\end{enumerate}
+\note{Each group has a loop. The loop realization uses $\det(I-A(\epsilon,t))=u(\epsilon)-tv(\epsilon)$ with $u(0)=v(0)=1$, taking nonzero small $\epsilon$ and $t=u/v$. No prescribed entry is deleted. The obstruction shows one bad realization, which suffices against requiring. Full algebra is in the appendix and reading.}
+\end{frame}
+% Manuscript: Lemma 7, Section 4
+\begin{frame}{The matching construction}
+\begin{bookresult}{lem-path}
+For every $n\geq1$, the endpoint-looped bidirected path requires nSSP for arbitrary nonzero real weights.
+\end{bookresult}
+\[
+ |E|=2(n-1)+1=2n-1.
+\]
+\begin{itemize}
+\item Both directions along the path make it strongly connected.
+\item For $n=1$, one loop suffices.
+\end{itemize}
+\small Prior construction: Koljančić--Oblak, Theorem 5.5, $m=1$.
+\note{The upper construction is credited directly. It works for arbitrary signs, not only a symmetric or positive matrix. In strong connectivity, allow length-zero paths at one vertex.}
+\end{frame}
+% Manuscript: Lemma 7, odd-offset proof
+\begin{frame}{How zeros propagate}
+Write $a_{11}=d$, $a_{i,i+1}=u_i$, $a_{i+1,i}=\ell_i$, all nonzero.
+\begin{enumerate}
+\item The support condition zeros offset $1$ and $f_{11}$.
+\item For odd $k\geq3$, commutation and smaller odd zeros give
+\[
+ \ell_i f_{i,i+k}=\ell_{i+k}f_{i+1,i+k+1},
+\]
+\[
+ 1\leq i\leq n-k,\qquad \ell_n=0.
+\]
+\item Start at the right boundary and descend in $i$.
+\item Transpose for lower offsets; the loop then kills column $1$.
+\end{enumerate}
+\note{All entries outside $[1,n]$ are extended by zero. Compare commutation at $(i+1,i+k)$; offset $k-2$ terms vanish. At $i=n-k$, the right term is zero. Divide only by nonzero $\ell_i$. For odd $i\geq3$ the $(i,1)$ equation reduces to $0=df_{i1}$, because the other entries have odd offset.}
+\end{frame}
+% Manuscript: Lemma 7, final basis argument
+\begin{frame}{One zero column forces the whole matrix}
+\[
+ e_1,\ Ae_1,\ \ldots,\ A^{n-1}e_1
+\]
+form a basis: for $0\leq k<n$, the last possible nonzero coordinate of $A^ke_1$ is
+\[
+ (A^ke_1)_{k+1}=\ell_1\cdots\ell_k\ne0.
+\]
+Since $Fe_1=0$ and $FA=AF$,
+\[
+ FA^ke_1=A^kFe_1=0\qquad(0\leq k<n).
+\]
+Thus $F$ kills a basis, so $F=0$.
+\note{For $k=0$ the product is empty and equals $1$. Induction on $k$ uses the tridiagonal shape: each multiplication can reach at most one new coordinate, and the new coefficient multiplies by $\ell_{k+1}$. This explains the basis claim without an eigenvalue calculation.}
+\end{frame}
+\section{Consequences}
+% Manuscript: Theorem 1, remaining clauses; source Problem 2.9
+\begin{frame}{The strongly connected conclusions}
+\begin{bookresult}{thm-strong}
+For every $n\geq1$, both strongly connected minima, requiring and allowing nSSP, equal $2n-1$.
+\end{bookresult}
+\begin{itemize}
+\item Lower bound: strong connectivity implies weak connectivity.
+\item Upper bound: the same endpoint-looped path.
+\item At order one, use a length-zero path.
+\end{itemize}
+\note{This answers both parts of Koljančić--Oblak Problem 2.9, journal p. 764. The deduction reuses the formal connected lower bound and endpoint theorem; the library's unrestricted minimum statement does not itself assert the strong-connectivity clauses.}
+\end{frame}
+% Manuscript: Corollary 4, equality clause; Section 5
+\begin{frame}{Equality and limits of the answer}
+\begin{bookresult}{cor-equality}
+For a connected nSSP matrix with $n\geq1$ and $m=2n-1$,
+\[
+ \dim\mathcal Z(A)=n,\qquad T_A:\mathcal Z(A)\simeq\ker B.
+\]
+\end{bookresult}
+\begin{itemize}
+\item The argument does not classify all equality supports.
+\item Disconnected allowing supports can use fewer arcs.
+\item The general sign-pattern classification is outside this result.
+\end{itemize}
+\note{An injection between equal finite dimensions is onto. The equation gives an isomorphism of real vector spaces, not a classification of graph structures. Keep the distinction between this written equality deduction and the formal lower bound.}
+\end{frame}
+% Manuscript: Bibliography; Section 5
+\begin{frame}{Sources and the next contribution}
+\small
+\begin{itemize}
+\item Ma--Zhang, version 3: \href{https://doi.org/10.5281/zenodo.23904482}{10.5281/zenodo.23904482}.
+\item Koljančić--Oblak: \href{https://doi.org/10.13001/ela.2026.10523}{10.13001/ela.2026.10523}, Problems 1.8 and 2.9; prior endpoint construction.
+\item Arav et al.: \href{https://doi.org/10.1016/j.laa.2024.05.013}{10.1016/j.laa.2024.05.013}; STP identification follows the cited original paper.
+\item Carptopus, MathExplore Notes (19 August 2026): prior looped-path allowability results.
+\end{itemize}
+\normalsize Reuse existing proofs: expose the centralizer lemma; complete the component/equality formulas; derive the strongly connected minima.
+\note{Direct listeners to the shared contribution requests in the reading. Do not describe the endpoint construction or Carptopus's earlier path classification as new. This talk concerns the minimum arc theorem, not a new proof of the nSSP--STP equivalence.}
+\end{frame}
+\appendix
+\section{Details}
+% Manuscript: Lemma 5, Section 3
+\begin{frame}{Tuning a loop without deleting arcs}
+\begin{bookresult}{lem-loop}
+A support containing a loop has an exact real realization with eigenvalue $1$.
+\end{bookresult}
+\[
+ A(\epsilon,t)=\epsilon N+t e_re_r^{\mathsf T},
+\]
+\[
+ \det(I-A)=u(\epsilon)-t v(\epsilon),\qquad u(0)=v(0)=1.
+\]
+Choose small $\epsilon\ne0$ and $t=u(\epsilon)/v(\epsilon)\ne0$. Then every prescribed entry remains nonzero.
+\note{The matrix $N$ is $1$ at prescribed positions except the chosen loop, and zero elsewhere. The cofactor $v$ is $1$ at zero; at order one the empty cofactor is $1$. Continuity supplies a neighborhood in which both $u$ and $v$ stay nonzero. This is an existence argument, not a prescribed-sign realization.}
+\end{frame}
+% Manuscript: Lemma 2, Section 2
+\begin{frame}{Where the centralizer dimension comes from}
+\begin{bookresult}{lem-centralizer}
+For every real $n\times n$ matrix, $\dim\mathcal Z(A)\geq n$.
+\end{bookresult}
+\[
+ \mathbb R^n\simeq\bigoplus_r\mathbb R[t]/(p_r),\qquad
+ \sum_r\deg p_r=n.
+\]
+Multiplication by arbitrary residue classes on each cyclic block commutes with $t$. Evaluation at the class of $1$ recovers each multiplier, giving an injection into $\mathcal Z(A)$.
+\note{Cayley--Hamilton makes this a finite torsion $\mathbb R[t]$ module, so the PID cyclic decomposition applies. The displayed lower bound already has an internal formal proof. The shared request is for its public exposure and reuse; no second construction is needed. At $n=0$ both dimensions are zero.}
+\end{frame}
+% Manuscript: Section 5, exact statement evidence
+\FormalVerification
+\end{document}

@@ -1,0 +1,57 @@
+{
+  "schema": "trureturing-books.lock.v1",
+  "repo": "the-omega-institute/trureturing",
+  "branch": "dev",
+  "commit": "8a24ea4e79de962725aab9d9b49cc605fcc211d8",
+  "pinned_at": "2026-11-08T12:32:04Z",
+  "declarations": {
+    "D5/S3/Combinatorics/SpectralGraph/KoljancicOblakMinimumArcs.endpoint_requires": {
+      "module": "D5/S3/Combinatorics/SpectralGraph/KoljancicOblakMinimumArcs",
+      "name": "D5.S3.Combinatorics.SpectralGraph.KoljancicOblakMinimumArcs.endpoint_requires",
+      "kind": "theorem",
+      "statement_id": "sha256:8cdfcae4cb0cb39f293f3350921603b86cf6c406c0f73a4f0d993c0721766347",
+      "line": 575,
+      "signature": "theorem endpoint_requires (n : ℕ) (hn : 1 ≤ n) : Requires (endpointSupport n)"
+    },
+    "D5/S3/Combinatorics/SpectralGraph/KoljancicOblakMinimumArcs.loop_support_eigenvalue_one": {
+      "module": "D5/S3/Combinatorics/SpectralGraph/KoljancicOblakMinimumArcs",
+      "name": "D5.S3.Combinatorics.SpectralGraph.KoljancicOblakMinimumArcs.loop_support_eigenvalue_one",
+      "kind": "theorem",
+      "statement_id": "sha256:8cdfcae4cb0cb39f293f3350921603b86cf6c406c0f73a4f0d993c0721766347",
+      "line": 671,
+      "signature": "theorem loop_support_eigenvalue_one {n : ℕ} (E : Finset (Fin n × Fin n)) (r : Fin n) (hr : (r,r) ∈ E) : ∃ A : Matrix (Fin n) (Fin n) ℝ, ExactSupport E A ∧ (1-A).det = 0"
+    },
+    "D5/S3/Combinatorics/SpectralGraph/KoljancicOblakMinimumArcs.nssp_arc_bound_of_connected": {
+      "module": "D5/S3/Combinatorics/SpectralGraph/KoljancicOblakMinimumArcs",
+      "name": "D5.S3.Combinatorics.SpectralGraph.KoljancicOblakMinimumArcs.nssp_arc_bound_of_connected",
+      "kind": "theorem",
+      "statement_id": "sha256:8cdfcae4cb0cb39f293f3350921603b86cf6c406c0f73a4f0d993c0721766347",
+      "line": 311,
+      "signature": "theorem nssp_arc_bound_of_connected {n : ℕ} (hn : 1 ≤ n) (E : Finset (Fin n × Fin n)) (hconn : ConnectedSupport E) (A : Matrix (Fin n) (Fin n) ℝ) (hA : ExactSupport E A) (hN : HasNSSP A) : 2*n-1 ≤ E.card"
+    },
+    "D5/S3/Combinatorics/SpectralGraph/KoljancicOblakMinimumArcs.nssp_centralizer_cycle_bound": {
+      "module": "D5/S3/Combinatorics/SpectralGraph/KoljancicOblakMinimumArcs",
+      "name": "D5.S3.Combinatorics.SpectralGraph.KoljancicOblakMinimumArcs.nssp_centralizer_cycle_bound",
+      "kind": "theorem",
+      "statement_id": "sha256:8cdfcae4cb0cb39f293f3350921603b86cf6c406c0f73a4f0d993c0721766347",
+      "line": 259,
+      "signature": "theorem nssp_centralizer_cycle_bound {n : ℕ} (E : Finset (Fin n × Fin n)) (A : Matrix (Fin n) (Fin n) ℝ) (hA : ExactSupport E A) (hN : HasNSSP A) : n + (incidence E).rank ≤ E.card"
+    },
+    "D5/S3/Combinatorics/SpectralGraph/KoljancicOblakMinimumArcs.requires_connected": {
+      "module": "D5/S3/Combinatorics/SpectralGraph/KoljancicOblakMinimumArcs",
+      "name": "D5.S3.Combinatorics.SpectralGraph.KoljancicOblakMinimumArcs.requires_connected",
+      "kind": "theorem",
+      "statement_id": "sha256:8cdfcae4cb0cb39f293f3350921603b86cf6c406c0f73a4f0d993c0721766347",
+      "line": 780,
+      "signature": "theorem requires_connected {n : ℕ} (E : Finset (Fin n × Fin n)) (hE : Requires E) : ConnectedSupport E"
+    },
+    "D5/S3/Combinatorics/SpectralGraph/KoljancicOblakMinimumArcs.result": {
+      "module": "D5/S3/Combinatorics/SpectralGraph/KoljancicOblakMinimumArcs",
+      "name": "D5.S3.Combinatorics.SpectralGraph.KoljancicOblakMinimumArcs.result",
+      "kind": "theorem",
+      "statement_id": "sha256:8cdfcae4cb0cb39f293f3350921603b86cf6c406c0f73a4f0d993c0721766347",
+      "line": 841,
+      "signature": "theorem result : MinimumArcs"
+    }
+  }
+}

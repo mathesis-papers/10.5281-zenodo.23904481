@@ -1,0 +1,199 @@
+{
+  "voice": "af_heart",
+  "speed": 0.98,
+  "say": {
+    "Koljančić": "Kolyanchich",
+    "Oblak": "Ob lack"
+  },
+  "music": {
+    "bpm": 78,
+    "progression": "d-minor"
+  },
+  "scenes": [
+    {
+      "id": "question",
+      "name": "THE QUESTION",
+      "lead": 0.7,
+      "tail": 0.5,
+      "music": [
+        0.35,
+        0.15,
+        0.12,
+        0,
+        0
+      ],
+      "lines": [
+        [
+          "Four vertices, six arrows along a path, and one endpoint loop: seven arcs in all.",
+          "四个点，路径上六条箭头，再加一个端点自环，总共七条弧。"
+        ],
+        [
+          "Put any nonzero real weight on every arc. How few arcs can guarantee matrix rigidity for every weighting?",
+          "每条弧都填任意非零实数。至少多少条弧，才能保证每种填法都有矩阵刚性？"
+        ],
+        [
+          "The answer is twice the number of vertices, minus one.",
+          "答案是顶点数的两倍减一。"
+        ]
+      ]
+    },
+    {
+      "id": "weights",
+      "name": "ONE OR EVERY",
+      "lead": 0.7,
+      "tail": 0.5,
+      "music": [
+        0.35,
+        0.15,
+        0.12,
+        0,
+        0
+      ],
+      "lines": [
+        [
+          "The rigidity test asks whether a commuting matrix, with zeros forced at reversed arc positions, must be zero.",
+          "刚性检验问：与原矩阵可交换，又在弧的反向位置被迫为零的矩阵，是否只能为零？"
+        ],
+        [
+          "Two isolated loops with weights one and two pass this test. Give both loops weight one, and a nonzero obstruction survives.",
+          "两个孤立自环分别填一与二能通过检验；若都填一，就会留下非零障碍。"
+        ],
+        [
+          "So allowing means one successful weighting; requiring means every weighting succeeds.",
+          "所以，允许指有一种成功填法；要求指每种填法都成功。"
+        ]
+      ]
+    },
+    {
+      "id": "flow",
+      "name": "MATRICES INTO FLOWS",
+      "lead": 0.7,
+      "tail": 0.5,
+      "music": [
+        0.35,
+        0.15,
+        0.12,
+        0,
+        0
+      ],
+      "lines": [
+        [
+          "Now record a product on each arc: its weight times the reversed entry of a commuting matrix.",
+          "现在给每条弧记录一个乘积：弧权重乘以可交换矩阵的反向条目。"
+        ],
+        [
+          "Commutation says that the incoming total equals the outgoing total at every vertex. Negative flow values are allowed.",
+          "可交换意味着每个点的流入总量等于流出总量，流的数值允许为负。"
+        ],
+        [
+          "For a matrix with the rigidity property, this recording loses no information: zero records force the whole commuting matrix to vanish.",
+          "如果原矩阵具有这种刚性，记录就不丢信息：全部记录为零会迫使整个可交换矩阵为零。"
+        ]
+      ]
+    },
+    {
+      "id": "count",
+      "name": "COUNTING FREEDOM",
+      "lead": 0.7,
+      "tail": 0.5,
+      "music": [
+        0.35,
+        0.15,
+        0.12,
+        0,
+        0
+      ],
+      "lines": [
+        [
+          "On this three-vertex path, opposite flows must match. The loop and the two arrow pairs leave three free numbers.",
+          "在这条三点路径上，相反方向的流必须相等；自环和两对箭头留下三个自由数。"
+        ],
+        [
+          "In general, a connected graph with m arcs and n vertices has m minus n plus one independent balanced flows.",
+          "一般地，连通图有 m 条弧、n 个点时，独立平衡流的个数是 m 减 n 加一。"
+        ],
+        [
+          "Commuting matrices always have at least n independent choices. An injective recording must fit them all, forcing m to be at least twice n minus one.",
+          "可交换矩阵总有至少 n 个独立选择；单射记录必须装下全部选择，因此 m 至少为二 n 减一。"
+        ]
+      ]
+    },
+    {
+      "id": "connect",
+      "name": "WHY CONNECTED",
+      "lead": 0.7,
+      "tail": 0.5,
+      "music": [
+        0.35,
+        0.15,
+        0.12,
+        0,
+        0
+      ],
+      "lines": [
+        [
+          "Why must a requiring support be connected? Every component needs a loop, or its diagonal indicator is an obstruction.",
+          "要求支撑为什么必须连通？每个分量都得有自环，否则其对角指示矩阵就是障碍。"
+        ],
+        [
+          "With two groups of components, tune their loops so both share eigenvalue one. Their eigenvectors then create a nonzero obstruction between the groups.",
+          "若有两组分量，调节自环使两组都有特征值一；它们的特征向量就能在组间产生非零障碍。"
+        ],
+        [
+          "One bad weighting defeats requiring. Thus the connected lower bound applies.",
+          "一种坏填法就足以否定要求，所以连通下界适用于原问题。"
+        ]
+      ]
+    },
+    {
+      "id": "sharp",
+      "name": "ATTAINING THE BOUND",
+      "lead": 0.7,
+      "tail": 0.5,
+      "music": [
+        0.35,
+        0.15,
+        0.12,
+        0,
+        0
+      ],
+      "lines": [
+        [
+          "The endpoint-looped double path, a construction of Koljančić and Oblak, reaches the bound with arbitrary nonzero real weights.",
+          "Koljančić 与 Oblak 的端点带环双向路径构造，对任意非零实权重都达到下界。"
+        ],
+        [
+          "The forced zeros spread to every odd offset of the commuting matrix. The endpoint loop then kills its first column.",
+          "强制零传播到可交换矩阵的所有奇数偏移带，端点自环再消去第一列。"
+        ],
+        [
+          "Repeatedly applying the original matrix to the first coordinate vector gives a basis. The commuting matrix kills that basis, so it is zero.",
+          "反复把原矩阵作用在第一个坐标向量上，得到一组基；可交换矩阵消灭这组基，所以它为零。"
+        ]
+      ]
+    },
+    {
+      "id": "answer",
+      "name": "THE MINIMUM",
+      "lead": 0.7,
+      "tail": 0.5,
+      "music": [
+        0.35,
+        0.15,
+        0.12,
+        0,
+        0
+      ],
+      "lines": [
+        [
+          "The requiring minimum is therefore two n minus one for every positive order, including one vertex with one loop.",
+          "所以每个正阶的要求最小值都是二 n 减一，也包括一个点配一个自环的情形。"
+        ],
+        [
+          "This counts the minimum; it does not classify every optimal support. The written explanation gives the full proof and its exact formal evidence.",
+          "这确定了最小值，却没有分类全部最优支撑；书面讲解给出完整证明及其准确形式证据。"
+        ]
+      ]
+    }
+  ]
+}
