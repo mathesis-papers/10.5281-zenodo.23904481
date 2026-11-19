@@ -2,16 +2,16 @@
   "files": {
     "pdf": {
       "bytes": 78458,
-      "matches_public": null,
+      "matches_public": true,
       "path": "paper.pdf",
-      "public_sha256": null,
+      "public_sha256": "c54c7ad4aae7872c3e36d9f71ff43fe03c910aab3c3262ea84a414826f6fb027",
       "sha256": "c54c7ad4aae7872c3e36d9f71ff43fe03c910aab3c3262ea84a414826f6fb027"
     },
     "source": {
       "bytes": 92531,
-      "matches_public": null,
+      "matches_public": true,
       "path": "source.archive",
-      "public_sha256": null,
+      "public_sha256": "9c9d372fc4c851fa947a403e952ecdb4c03e29d15950b4be56309fd910bae0ed",
       "sha256": "9c9d372fc4c851fa947a403e952ecdb4c03e29d15950b4be56309fd910bae0ed"
     }
   },
@@ -38,6 +38,8 @@
     "license": "CC-BY-4.0",
     "msc": [],
     "pdf": {
+      "bytes": 78458,
+      "sha256": "c54c7ad4aae7872c3e36d9f71ff43fe03c910aab3c3262ea84a414826f6fb027",
       "url": "/api/v1/collected-papers/koljancic-oblak-2026-nssp-minimum-arcs-problem-1-8/files/pdf?version=3"
     },
     "previous_version": null,
@@ -46,6 +48,8 @@
     "record": "koljancic-oblak-2026-nssp-minimum-arcs-problem-1-8",
     "repository_name": "10.5281-zenodo.23904481",
     "source": {
+      "bytes": 92531,
+      "sha256": "9c9d372fc4c851fa947a403e952ecdb4c03e29d15950b4be56309fd910bae0ed",
       "url": "/api/v1/collected-papers/koljancic-oblak-2026-nssp-minimum-arcs-problem-1-8/files/source?version=3"
     },
     "title": "The 2n−1 arc minimum in Koljančić–Oblak, Problem 1.8 (p. 759)",
